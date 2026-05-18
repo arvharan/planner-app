@@ -1,0 +1,290 @@
+/* ========================= */
+/* 🌍 GLOBAL */
+/* ========================= */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Segoe UI', sans-serif;
+  background: #f1f5f9;
+  color: #0f172a;
+}
+
+/* ========================= */
+/* 🔐 AUTH UI (LOGIN / SIGNUP) */
+/* ========================= */
+
+.auth-body {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  background: linear-gradient(135deg, #0f172a, #1e293b);
+  color: white;
+}
+
+.auth-box {
+  backdrop-filter: blur(20px);
+  background: rgba(255,255,255,0.1);
+  border: 1px solid rgba(255,255,255,0.2);
+
+  padding: 30px;
+  width: 320px;
+  border-radius: 16px;
+
+  box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+  text-align: center;
+}
+
+.auth-box h2 {
+  margin-bottom: 10px;
+}
+
+/* Floating Inputs */
+.field {
+  position: relative;
+  margin: 20px 0;
+}
+
+.field input {
+  width: 100%;
+  padding: 12px;
+  background: transparent;
+  border: 1px solid rgba(255,255,255,0.4);
+  border-radius: 8px;
+  color: white;
+  outline: none;
+}
+
+.field label {
+  position: absolute;
+  left: 12px;
+  top: 12px;
+  font-size: 14px;
+  color: #cbd5f5;
+  transition: 0.2s;
+}
+
+.field input:focus + label,
+.field input:valid + label {
+  top: -8px;
+  font-size: 12px;
+  color: #22c55e;
+}
+
+/* Buttons */
+.auth-box button {
+  width: 100%;
+  padding: 12px;
+  margin-top: 10px;
+
+  border: none;
+  border-radius: 8px;
+  background: #22c55e;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.auth-box a {
+  color: #93c5fd;
+  text-decoration: none;
+}
+
+.auth-box a:hover {
+  text-decoration: underline;
+}
+
+/* Error message */
+.error {
+  color: #f87171;
+  font-size: 14px;
+  min-height: 18px;
+  margin-top: 5px;
+}
+
+/* ========================= */
+/* 🔝 TOP BAR */
+/* ========================= */
+
+.topbar {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+
+  padding: 10px;
+  background: #0f172a;
+  color: white;
+}
+
+.topbar button {
+  padding: 6px 12px;
+  border-radius: 8px;
+  border: none;
+  background: #22c55e;
+  color: white;
+  cursor: pointer;
+}
+
+/* ========================= */
+/* 📅 CALENDAR */
+/* ========================= */
+
+.calendar {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 6px;
+  padding: 10px;
+}
+
+.calendar div {
+  padding: 15px;
+  background: #e2e8f0;
+  border-radius: 8px;
+  text-align: center;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.calendar div:hover {
+  background: #cbd5f5;
+}
+
+.calendar .selected {
+  background: #22c55e !important;
+  color: white;
+}
+
+.calendar .today {
+  border: 2px solid #22c55e;
+}
+
+/* ========================= */
+/* 📋 EVENTS */
+/* ========================= */
+
+#selectedDate {
+  text-align: center;
+  margin-top: 10px;
+  font-weight: 600;
+}
+
+/* Inputs */
+#eventText,
+#eventTime {
+  margin: 10px;
+  padding: 10px;
+  border-radius: 6px;
+  border: 1px solid #cbd5e1;
+  outline: none;
+}
+
+#eventText:focus,
+#eventTime:focus {
+  border-color: #22c55e;
+}
+
+/* Add Button */
+button[onclick="addEvent()"] {
+  padding: 10px 14px;
+  background: #22c55e;
+  border: none;
+  border-radius: 6px;
+  color: white;
+  cursor: pointer;
+}
+
+/* Event List */
+#events {
+  padding: 10px;
+}
+
+.event-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  background: #ffffff;
+  padding: 10px;
+  margin-bottom: 8px;
+  border-radius: 8px;
+
+  box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+}
+
+/* Delete Button */
+.delete-btn {
+  background: #ef4444;
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.delete-btn:hover {
+  background: #dc2626;
+}
+
+/* ========================= */
+/* 📱 MOBILE RESPONSIVE */
+/* ========================= */
+
+@media (max-width: 768px) {
+
+  /* Auth box */
+  .auth-box {
+    width: 90%;
+    padding: 20px;
+  }
+
+  /* Topbar */
+  .topbar {
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  /* Calendar */
+  .calendar {
+    gap: 4px;
+  }
+
+  .calendar div {
+    padding: 10px;
+    font-size: 14px;
+  }
+
+  /* Inputs */
+  #eventText,
+  #eventTime {
+    width: calc(100% - 20px);
+    margin: 8px 10px;
+  }
+
+  /* Add button */
+  button[onclick="addEvent()"] {
+    width: calc(100% - 20px);
+    margin: 10px;
+  }
+
+  /* Event list */
+  .event-item {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 6px;
+  }
+
+  /* Delete button */
+  .delete-btn {
+    align-self: flex-end;
+  }
+}
+
+body {
+  -webkit-tap-highlight-color: transparent;
+}

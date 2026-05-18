@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Loading...</title>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
+</head>
+<body>
+
+<script src="js/config.js"></script>
+
+<script>
+async function route() {
+  console.log("Routing...");
+
+  const { data, error } = await supabase.auth.getSession();
+
+  if (error) {
+    console.error(error);
+    document.body.innerText = "Error loading app";
+    return;
+  }
+
+  if (data.session) {
+    console.log("Logged in → app");
+    window.location.href = "app.html";
+  } else {
+    console.log("Not logged in → login");
+    window.location.href = "login.html";
+  }
+}
+
+route();
+</script>
+
+</body>
+</html>
